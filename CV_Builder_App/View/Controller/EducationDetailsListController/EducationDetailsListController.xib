@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EducationDetailsListController" customModule="CV_Builder_App" customModuleProvider="target">
+            <connections>
+                <outlet property="placeholderLabel" destination="8Gz-cK-hhr" id="TXW-0y-dvI"/>
+                <outlet property="recordsListTableView" destination="OUD-zG-k3q" id="v39-d8-doB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-cK-hhr">
+                    <rect key="frame" x="32" y="453" width="350" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Click Add button to add new Education detail"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OUD-zG-k3q">
+                    <rect key="frame" x="0.0" y="44" width="414" height="758"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="SAt-XL-PfL"/>
+                        <outlet property="delegate" destination="-1" id="kst-WP-77u"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftB-1B-9OR">
+                    <rect key="frame" x="0.0" y="802" width="414" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7x5-wE-BzS">
+                            <rect key="frame" x="178.5" y="10" width="57" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="AWe-4u-ur6"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Submit"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="nextButtonClicked" destination="-1" eventType="touchUpInside" id="mVM-wd-SIw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="7x5-wE-BzS" firstAttribute="centerX" secondItem="ftB-1B-9OR" secondAttribute="centerX" id="qIZ-hT-JE8"/>
+                        <constraint firstAttribute="height" constant="60" id="scz-0z-s3H"/>
+                        <constraint firstItem="7x5-wE-BzS" firstAttribute="centerY" secondItem="ftB-1B-9OR" secondAttribute="centerY" id="xt2-Qr-HNs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="OUD-zG-k3q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4XY-qX-1mp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OUD-zG-k3q" secondAttribute="trailing" id="Fuy-Xc-kfN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8Gz-cK-hhr" secondAttribute="trailing" constant="32" id="H3C-yc-5a8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ftB-1B-9OR" secondAttribute="trailing" id="Scd-K1-30q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ftB-1B-9OR" secondAttribute="bottom" id="WSU-Gg-hPg"/>
+                <constraint firstItem="8Gz-cK-hhr" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="acv-cy-nwQ"/>
+                <constraint firstItem="8Gz-cK-hhr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="huH-aN-UTs"/>
+                <constraint firstItem="ftB-1B-9OR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="i2N-4R-tf9"/>
+                <constraint firstItem="OUD-zG-k3q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="i2f-kw-OGg"/>
+                <constraint firstItem="ftB-1B-9OR" firstAttribute="top" secondItem="OUD-zG-k3q" secondAttribute="bottom" id="isn-7Y-w1r"/>
+            </constraints>
+            <point key="canvasLocation" x="-143" y="64"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

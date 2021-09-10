@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNewWorkExperienceViewController" customModule="CV_Builder_App" customModuleProvider="target">
+            <connections>
+                <outlet property="addNewRecordFieldsTableView" destination="mZF-zd-bUZ" id="Gmi-9S-Vlb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cJ-to-F7k">
+                    <rect key="frame" x="8" y="44" width="398" height="48"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Work Experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryu-YK-w6c">
+                            <rect key="frame" x="117.5" y="13.5" width="163.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Add Work Experience"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-z0-er2">
+                            <rect key="frame" x="352" y="9.5" width="30" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="6s4-W5-GHm"/>
+                                <constraint firstAttribute="width" secondItem="3bl-z0-er2" secondAttribute="height" multiplier="1:1" id="fsE-fx-PdO"/>
+                            </constraints>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <state key="normal" backgroundImage="xmark.circle" catalog="system">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <connections>
+                                <action selector="closeForm" destination="-1" eventType="touchUpInside" id="GJc-5o-lm6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ryu-YK-w6c" firstAttribute="centerY" secondItem="9cJ-to-F7k" secondAttribute="centerY" id="4qC-Ky-W9z"/>
+                        <constraint firstAttribute="height" constant="48" id="DX0-Ex-4Co"/>
+                        <constraint firstItem="ryu-YK-w6c" firstAttribute="centerX" secondItem="9cJ-to-F7k" secondAttribute="centerX" id="Jsj-wG-5lp"/>
+                        <constraint firstItem="3bl-z0-er2" firstAttribute="centerY" secondItem="9cJ-to-F7k" secondAttribute="centerY" id="eeW-SD-qtW"/>
+                        <constraint firstAttribute="trailing" secondItem="3bl-z0-er2" secondAttribute="trailing" constant="16" id="xES-0Q-KPP"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mZF-zd-bUZ">
+                    <rect key="frame" x="8" y="100" width="398" height="694"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTB-Id-Vnp">
+                    <rect key="frame" x="0.0" y="802" width="414" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="46" placeholderIntrinsicHeight="infinite" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ax-Bj-Pm3">
+                            <rect key="frame" x="184" y="10" width="46" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="7RK-XU-g60"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <state key="normal" title="Save">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Save"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="saveWorkExperience" destination="-1" eventType="touchUpInside" id="1iP-UQ-1RD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="5Ax-Bj-Pm3" firstAttribute="centerY" secondItem="ZTB-Id-Vnp" secondAttribute="centerY" id="8Bu-RZ-5JG"/>
+                        <constraint firstItem="5Ax-Bj-Pm3" firstAttribute="centerX" secondItem="ZTB-Id-Vnp" secondAttribute="centerX" id="SHd-T2-n6K"/>
+                        <constraint firstAttribute="height" constant="60" id="lwI-g3-r7P"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9cJ-to-F7k" secondAttribute="trailing" constant="8" id="IK4-Ok-QF3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZTB-Id-Vnp" secondAttribute="trailing" id="SYN-bk-qx7"/>
+                <constraint firstItem="mZF-zd-bUZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="bY8-Uv-HCl"/>
+                <constraint firstItem="9cJ-to-F7k" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mN9-Kl-UQW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mZF-zd-bUZ" secondAttribute="trailing" constant="8" id="mhT-je-i2W"/>
+                <constraint firstItem="9cJ-to-F7k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="ohf-8C-CoZ"/>
+                <constraint firstItem="ZTB-Id-Vnp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tx2-Mg-4gh"/>
+                <constraint firstItem="mZF-zd-bUZ" firstAttribute="top" secondItem="9cJ-to-F7k" secondAttribute="bottom" constant="8" id="vEg-PM-cAB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZTB-Id-Vnp" secondAttribute="bottom" id="vi5-Gt-7yL"/>
+                <constraint firstItem="ZTB-Id-Vnp" firstAttribute="top" secondItem="mZF-zd-bUZ" secondAttribute="bottom" constant="8" id="wM7-yb-0lh"/>
+            </constraints>
+            <point key="canvasLocation" x="19" y="76"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

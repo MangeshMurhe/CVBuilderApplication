@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H524" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Education" representedClassName="Education" syncable="YES">
+        <attribute name="degreeName" optional="YES" attributeType="String"/>
+        <attribute name="descriptionDetails" optional="YES" attributeType="String"/>
+        <attribute name="from" optional="YES" attributeType="String"/>
+        <attribute name="instituteName" optional="YES" attributeType="String"/>
+        <attribute name="toDate" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="educationDetails" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="dateOfBirth" optional="YES" attributeType="String"/>
+        <attribute name="emailAddress" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="profileImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String"/>
+        <attribute name="telephone" optional="YES" attributeType="String"/>
+        <attribute name="userDescription" optional="YES" attributeType="String"/>
+        <relationship name="educationDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="user" inverseEntity="Education"/>
+        <relationship name="workExperiences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkExperience" inverseName="user" inverseEntity="WorkExperience"/>
+    </entity>
+    <entity name="WorkExperience" representedClassName="WorkExperience" syncable="YES">
+        <attribute name="companyName" optional="YES" attributeType="String"/>
+        <attribute name="designation" optional="YES" attributeType="String"/>
+        <attribute name="from" optional="YES" attributeType="String"/>
+        <attribute name="jobDescription" optional="YES" attributeType="String"/>
+        <attribute name="toDate" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="workExperiences" inverseEntity="User"/>
+    </entity>
+    <elements>
+        <element name="Education" positionX="-36" positionY="45" width="128" height="133"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="WorkExperience" positionX="-54" positionY="18" width="128" height="133"/>
+    </elements>
+</model>

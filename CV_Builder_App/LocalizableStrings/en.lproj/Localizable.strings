@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  CV_Builder_App
+
+  Created by Mangesh on 09/09/21.
+  
+*/
+"Next" = "Next";
+"Save" = "Save";
+"Done" = "Done";
+"Edit" = "Edit";
+"Ok" = "Ok";
+"continue" = "continue";
+"Cancel" = "Cancel";
+"Submit" = "Submit";
+"New CV" = "New CV";
+"User Details" = "User Details";
+"Name" = "Name";
+"Surname" = "Surname";
+"Date of Birth" = "Date of Birth";
+"Email" = "Email";
+"Telephone" = "Telephone";
+"Description" = "Description";
+"Company" = "Company";
+"From" = "From";
+"To" = "To";
+"Job Description" = "Job Description";
+"Institution" = "Institution";
+"Work Experience" = "Work Experience";
+"Education" = "Education";
+"Add Education" = "Add Education";
+"Add Work Experience" = "Add Work Experience";
+"Click Add button to add new work experience" = "Click Add button to add new work experience";
+"Click Add button to add new Education detail" = "Click Add button to add new Education detail";
+"Please fill all the mandatory fields detail" = "Please fill all the mandatory fields detail";
+"Please enter valid email" = "Please enter valid email";
+"No work experience added. Would you like to continue?" = "No work experience added. Would you like to continue?";
