@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 enum ProfileSummarySections: Int {
     case userDetails = 0
@@ -13,7 +14,7 @@ enum ProfileSummarySections: Int {
     case educationDetails
 }
 
-final class CVProfileSummaryController: UIViewController {
+final class CVProfileSummaryController: UIViewController, MFMailComposeViewControllerDelegate {
 
     //MARK:- Outlets
     @IBOutlet private weak var cvProfileSummaryTableView: UITableView!
@@ -25,6 +26,7 @@ final class CVProfileSummaryController: UIViewController {
     private let educationDetailsCellReuseIdentifier = "educationDetailsCell"
     private let sectionHeaderHeight: CGFloat = 30
     private let editButtonTitle = "Edit"
+    private let shareButtonTitle = "Share"
     //MARK:- Initializers
     init(viewModel: CVProfileSummaryViewModel) {
         cvProfileSummaryViewModel = viewModel
@@ -51,7 +53,14 @@ final class CVProfileSummaryController: UIViewController {
     @objc private func editButtonTapped() {
         ScreenManager.sharedInstance.pushUserDetailsController(context: self, userDetailViewModel: UserDetailsViewModel(userFieldsCase: GetUserDetailsFieldUseCase(repository: UserRepository(context: CoreDataManager.sharedInstance.managedObjectContext)), currentUserCv: cvProfileSummaryViewModel.getUserCVDetail()))
      }
-
+    
+    @objc private func shareButtonClicked() {
+        pdfDataWithTableView(tableView: cvProfileSummaryTableView)
+        if let pdfData = getUserCVPdfFileData() {
+            sendEmail(data: pdfData)
+        }
+    }
+    
     //MARK:- Setup methods
     private func registerDetailCells() {
         cvProfileSummaryTableView.register(UINib(nibName: "CVUserDetailsSummaryCell", bundle: nil), forCellReuseIdentifier: userDetailsSummaryCellReuseIdentifier)
@@ -61,8 +70,11 @@ final class CVProfileSummaryController: UIViewController {
     
     private func setUpTopButton() {
         let editButton = UIBarButtonItem(title: editButtonTitle.localized, style: .plain, target: self, action: #selector(editButtonTapped))
+        let shareButton = UIBarButtonItem(title: shareButtonTitle.localized, style: .plain, target: self, action: #selector(shareButtonClicked))
         editButton.tintColor = UIColor.label
+        shareButton.tintColor = UIColor.label
         navigationItem.rightBarButtonItems = [editButton]
+        navigationItem.leftBarButtonItem = shareButton
     }
 }
 
@@ -137,5 +149,83 @@ extension CVProfileSummaryController: UITableViewDelegate {
         } else {
            return sectionHeaderHeight
         }
+    }
+}
+
+//MARK:- Share methods
+extension CVProfileSummaryController: AlertDisplayProtocol {
+    
+    private func pdfDataWithTableView(tableView: UITableView) {
+        let priorBounds = tableView.bounds
+        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
+        tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
+        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:self.view.frame.height)
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
+        var pageOriginY: CGFloat = 0
+        while pageOriginY < fittedSize.height {
+            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+            UIGraphicsGetCurrentContext()!.restoreGState()
+            pageOriginY += pdfPageBounds.size.height
+        }
+        UIGraphicsEndPDFContext()
+        tableView.bounds = priorBounds
+        if let path = getPdfFilePath(), pdfData.write(to:path, atomically: true) {
+            print("File written at path:\(path.absoluteString)")
+        }
+    }
+    
+    private func getPdfFilePath()-> URL? {
+        var pdfURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+        if let userName = cvProfileSummaryViewModel.getUserNameToSavePdf() {
+            pdfURL = pdfURL.appendingPathComponent("\(userName).pdf")
+        } else {
+            pdfURL = pdfURL.appendingPathComponent("userCV.pdf")
+        }
+        return pdfURL
+    }
+    
+    private func getUserCVPdfFileData() -> Data? {
+        if let filePath = getPdfFilePath(), FileManager.default.fileExists(atPath: filePath.path) {
+            return  try? Data(contentsOf: filePath)
+        }
+        return nil
+    }
+    
+    private func removeUserCVPdfFile() {
+        if  let filePath = getPdfFilePath(), FileManager.default.fileExists(atPath: filePath.path) {
+           try? FileManager.default.removeItem(atPath: filePath.path)
+        }
+    }
+    
+    func sendEmail(data:Data?) {
+        if(MFMailComposeViewController.canSendMail()) {
+            let mailComposer = MFMailComposeViewController()
+            mailComposer.mailComposeDelegate = self
+            if let emailAddress = cvProfileSummaryViewModel.getUserCVDetail().emailAddress {
+                mailComposer.setToRecipients([emailAddress])
+            }
+            var userCVFileName = "CV"
+            if let fileName = cvProfileSummaryViewModel.getUserNameToSavePdf() {
+                userCVFileName = fileName
+                mailComposer.setSubject(fileName)
+            }
+            if let fileData = data {
+                mailComposer.addAttachmentData(fileData, mimeType: "application/pdf", fileName: "\(userCVFileName).pdf")
+            }
+            removeUserCVPdfFile()
+            self.present(mailComposer, animated: true, completion: nil)
+        } else {
+            displayAlert(message: "Failed to send email".localized, context: self)
+            removeUserCVPdfFile()
+        }
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?)
+    {
+        self.dismiss(animated: true, completion: nil)
     }
 }

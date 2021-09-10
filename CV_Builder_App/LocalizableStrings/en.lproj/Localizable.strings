@@ -9,6 +9,7 @@
 "Save" = "Save";
 "Done" = "Done";
 "Edit" = "Edit";
+"Share" = "Share";
 "Ok" = "Ok";
 "continue" = "continue";
 "Cancel" = "Cancel";
@@ -35,3 +36,4 @@
 "Please fill all the mandatory fields detail" = "Please fill all the mandatory fields detail";
 "Please enter valid email" = "Please enter valid email";
 "No work experience added. Would you like to continue?" = "No work experience added. Would you like to continue?";
+"Failed to send email" = "Failed to send email";

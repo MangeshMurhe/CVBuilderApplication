@@ -45,4 +45,11 @@ class CVProfileSummaryViewModel{
     func getEducationAt(index: Int) -> Education? {
         return educationDetails?[index]
     }
+    
+    func getUserNameToSavePdf()->String? {
+        if let name = userCV.name, let surname = userCV.surname {
+            return "\(name)_\(surname)_CV"
+        }
+        return nil
+    }
 }
