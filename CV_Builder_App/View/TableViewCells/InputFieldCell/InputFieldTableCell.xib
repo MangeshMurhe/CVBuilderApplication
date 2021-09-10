@@ -45,6 +45,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="detailsTextField" destination="PIY-4X-gS7" id="qVa-Fx-BaK"/>
                 <outlet property="downArrowImageView" destination="I8t-QT-nxb" id="GLQ-5U-feq"/>

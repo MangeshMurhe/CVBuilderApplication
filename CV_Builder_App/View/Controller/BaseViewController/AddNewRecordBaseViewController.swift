@@ -19,6 +19,8 @@ class AddNewRecordBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
+        setUpTapGuestureForTableView()
+        setupKeyBoardNotificationObservers()
     }
     
     //MARK:- Action methods
@@ -33,7 +35,7 @@ class AddNewRecordBaseViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            tableViewBottomConstraint.constant = keyboardSize.height
+            tableViewBottomConstraint.constant = keyboardSize.height - 60
         }
     }
 

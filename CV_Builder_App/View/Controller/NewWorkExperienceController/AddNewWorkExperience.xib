@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNewWorkExperienceViewController" customModule="CV_Builder_App" customModuleProvider="target">
             <connections>
                 <outlet property="addNewRecordFieldsTableView" destination="mZF-zd-bUZ" id="Gmi-9S-Vlb"/>
+                <outlet property="tableViewBottomConstraint" destination="wM7-yb-0lh" id="tzy-A7-Hnh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,8 +56,8 @@
                         <constraint firstAttribute="trailing" secondItem="3bl-z0-er2" secondAttribute="trailing" constant="16" id="xES-0Q-KPP"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mZF-zd-bUZ">
-                    <rect key="frame" x="8" y="100" width="398" height="694"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mZF-zd-bUZ">
+                    <rect key="frame" x="0.0" y="92" width="414" height="710"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTB-Id-Vnp">
@@ -92,14 +93,14 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9cJ-to-F7k" secondAttribute="trailing" constant="8" id="IK4-Ok-QF3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZTB-Id-Vnp" secondAttribute="trailing" id="SYN-bk-qx7"/>
-                <constraint firstItem="mZF-zd-bUZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="bY8-Uv-HCl"/>
+                <constraint firstItem="mZF-zd-bUZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bY8-Uv-HCl"/>
                 <constraint firstItem="9cJ-to-F7k" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mN9-Kl-UQW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mZF-zd-bUZ" secondAttribute="trailing" constant="8" id="mhT-je-i2W"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mZF-zd-bUZ" secondAttribute="trailing" id="mhT-je-i2W"/>
                 <constraint firstItem="9cJ-to-F7k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="ohf-8C-CoZ"/>
                 <constraint firstItem="ZTB-Id-Vnp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tx2-Mg-4gh"/>
-                <constraint firstItem="mZF-zd-bUZ" firstAttribute="top" secondItem="9cJ-to-F7k" secondAttribute="bottom" constant="8" id="vEg-PM-cAB"/>
+                <constraint firstItem="mZF-zd-bUZ" firstAttribute="top" secondItem="9cJ-to-F7k" secondAttribute="bottom" id="vEg-PM-cAB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZTB-Id-Vnp" secondAttribute="bottom" id="vi5-Gt-7yL"/>
-                <constraint firstItem="ZTB-Id-Vnp" firstAttribute="top" secondItem="mZF-zd-bUZ" secondAttribute="bottom" constant="8" id="wM7-yb-0lh"/>
+                <constraint firstItem="ZTB-Id-Vnp" firstAttribute="top" secondItem="mZF-zd-bUZ" secondAttribute="bottom" id="wM7-yb-0lh"/>
             </constraints>
             <point key="canvasLocation" x="19" y="76"/>
         </view>

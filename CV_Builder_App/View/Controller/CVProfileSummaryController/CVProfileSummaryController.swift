@@ -14,19 +14,22 @@ enum ProfileSummarySections: Int {
     case educationDetails
 }
 
-final class CVProfileSummaryController: UIViewController, MFMailComposeViewControllerDelegate {
+final class CVProfileSummaryController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 
     //MARK:- Outlets
     @IBOutlet private weak var cvProfileSummaryTableView: UITableView!
     
     //MARK:- Properties
     private var cvProfileSummaryViewModel: CVProfileSummaryViewModel
+    private lazy var  mailComposer = MFMailComposeViewController()
     private let userDetailsSummaryCellReuseIdentifier = "userDetailsSummaryCell"
     private let workExperienceDetailsCellReuseIdentifier = "recordDetailsCell"
     private let educationDetailsCellReuseIdentifier = "educationDetailsCell"
     private let sectionHeaderHeight: CGFloat = 30
     private let editButtonTitle = "Edit"
     private let shareButtonTitle = "Share"
+    private let emailFailureMessage = "Failed to send email"
+    
     //MARK:- Initializers
     init(viewModel: CVProfileSummaryViewModel) {
         cvProfileSummaryViewModel = viewModel
@@ -43,6 +46,7 @@ final class CVProfileSummaryController: UIViewController, MFMailComposeViewContr
         registerDetailCells()
         setUpTopButton()
         navigationItem.hidesBackButton = true
+        mailComposer.delegate = self
     }
     
     //MARK:- Action methods
@@ -173,8 +177,8 @@ extension CVProfileSummaryController: AlertDisplayProtocol {
         }
         UIGraphicsEndPDFContext()
         tableView.bounds = priorBounds
-        if let path = getPdfFilePath(), pdfData.write(to:path, atomically: true) {
-            print("File written at path:\(path.absoluteString)")
+        if let path = getPdfFilePath() {
+            pdfData.write(to:path, atomically: true)
         }
     }
     
@@ -203,8 +207,6 @@ extension CVProfileSummaryController: AlertDisplayProtocol {
     
     func sendEmail(data:Data?) {
         if(MFMailComposeViewController.canSendMail()) {
-            let mailComposer = MFMailComposeViewController()
-            mailComposer.mailComposeDelegate = self
             if let emailAddress = cvProfileSummaryViewModel.getUserCVDetail().emailAddress {
                 mailComposer.setToRecipients([emailAddress])
             }
@@ -219,13 +221,12 @@ extension CVProfileSummaryController: AlertDisplayProtocol {
             removeUserCVPdfFile()
             self.present(mailComposer, animated: true, completion: nil)
         } else {
-            displayAlert(message: "Failed to send email".localized, context: self)
+            displayAlert(message: emailFailureMessage.localized, context: self)
             removeUserCVPdfFile()
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?)
-    {
-        self.dismiss(animated: true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        mailComposer.dismiss(animated: true, completion: nil)
     }
 }
