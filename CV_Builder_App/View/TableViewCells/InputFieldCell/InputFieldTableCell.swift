@@ -51,13 +51,13 @@ final class InputFieldTableCell: UITableViewCell {
     func setUpData(currentField: FieldDetails, section: Int) {
         fieldDataModel = currentField
         cellSection = section
-         
         if fieldDataModel?.fieldType == FieldType.dropDownTextField {
             downArrowImageView.isHidden = false
             detailsTextField.cornerRadius = 10
+            detailsTextField.doneAccessory = false
         } else {
             downArrowImageView.isHidden = true
-
+            detailsTextField.doneAccessory = true
         }
         if let value = currentField.fieldValue {
             detailsTextField.text = value
@@ -87,5 +87,10 @@ extension InputFieldTableCell: UITextFieldDelegate {
         } else {
             fieldDataModel?.fieldValue = nil
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
